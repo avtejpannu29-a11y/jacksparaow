@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEEP HERE | Identity Verification</title>
+    <title>DEEP HERE | Secure Verification</title>
     
     <script>
     !function(f,b,e,v,n,t,s)
@@ -14,44 +14,158 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '690224100542889'); 
+    fbq('init', '690224100542889'); /* Updated Pixel ID */
     fbq('track', 'PageView');
     </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=690224100542889&ev=PageView&noscript=1"
+    /></noscript>
     <style>
-        body { background: #000; color: #fff; font-family: -apple-system, sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        .card { width: 90%; max-width: 380px; text-align: center; padding: 50px 20px; background: #0a0a0a; border: 1px solid #111; border-radius: 30px; }
-        .status { font-size: 11px; color: #00ff88; margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; }
-        .btn { background: #fff; color: #000; width: 100%; padding: 22px; border-radius: 15px; font-size: 18px; font-weight: 800; border: none; cursor: pointer; }
-        .footer { position: fixed; bottom: 20px; font-size: 9px; color: #222; text-decoration: none; letter-spacing: 2px; }
+        :root {
+            --bg-black: #000000;
+            --surface: #0a0a0a;
+            --primary: #ffffff;
+            --status-green: #00ff88;
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: var(--primary);
+            font-family: -apple-system, system-ui, sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .auth-container {
+            width: 88%;
+            max-width: 380px;
+            text-align: center;
+            padding: 50px 25px;
+            background: var(--surface);
+            border: 1px solid #151515;
+            border-radius: 35px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.9);
+        }
+
+        .brand-header {
+            font-size: 34px;
+            font-weight: 900;
+            letter-spacing: -2px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .status-badge {
+            font-size: 11px;
+            color: var(--status-green);
+            letter-spacing: 2px;
+            margin-bottom: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+        }
+
+        .pulse-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--status-green);
+            border-radius: 50%;
+            margin-right: 10px;
+            box-shadow: 0 0 12px var(--status-green);
+            animation: glow 2s infinite;
+        }
+
+        @keyframes glow {
+            0% { opacity: 0.3; transform: scale(0.9); }
+            50% { opacity: 1; transform: scale(1.1); }
+            100% { opacity: 0.3; transform: scale(0.9); }
+        }
+
+        .action-btn {
+            background: var(--primary);
+            color: #000;
+            width: 100%;
+            padding: 22px;
+            border-radius: 18px;
+            font-size: 18px;
+            font-weight: 800;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: 0.2s transform;
+        }
+
+        .action-btn:active {
+            transform: scale(0.96);
+        }
+
+        #wait-msg {
+            display: none;
+            margin-top: 25px;
+            font-size: 13px;
+            color: #444;
+            letter-spacing: 0.5px;
+        }
+
+        .aj-ads-footer {
+            position: fixed;
+            bottom: 25px;
+            color: rgba(255, 255, 255, 0.05);
+            text-decoration: none;
+            font-size: 9px;
+            letter-spacing: 3px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            padding: 6px 20px;
+            border-radius: 100px;
+            transition: 0.3s;
+        }
+
+        .aj-ads-footer:hover {
+            color: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <h1 style="font-size:32px; font-weight:900; margin-bottom:5px;">DANIEL HERE</h1>
-        <div class="status">● Connection Secured</div>
-        <button id="gate-btn" class="btn">CONTINUE TO JOIN</button>
+    <div class="auth-container">
+        <div class="brand-header">DANIEL HERE</div>
+        <div class="status-badge">
+            <span class="pulse-dot"></span> ACCESS NOW
+        </div>
+        
+        <button id="cta-node" class="action-btn">VERIFY & JOIN</button>
+        <div id="wait-msg">Establishing Secure Handshake...</div>
     </div>
 
-    <a href="https://t.me/+3r5-f-xfNHNjYmNl" class="footer">POWERED BY AJ ADS</a>
+    <a href="https://t.me/+3r5-f-xfNHNjYmNl" class="aj-ads-footer">POWERED BY AJ ADS</a>
 
     <script>
-        document.getElementById('gate-btn').onclick = function() {
-            // Fires the Subscribe event for Meta
+        document.getElementById('cta-node').addEventListener('click', function() {
+            const btn = this;
+            const msg = document.getElementById('wait-msg');
+
+            // 1. Fire SUBSCRIBE event for the new Pixel
             fbq('track', 'Subscribe');
-            
-            this.innerHTML = "REDIRECTING...";
-            this.style.opacity = "0.5";
 
-            // Obfuscated link construction to evade Meta's simple crawlers
-            // Link: https://t.me/+Ol9rnkTMswg0Njc1
-            const p1 = "aHR0cHM6Ly90Lm1lLw==";
-            const p2 = "K09sOXJuay1Nc3dnME5qYzE=";
+            // 2. Interface Swap
+            btn.style.display = 'none';
+            msg.style.display = 'block';
 
-            setTimeout(() => {
-                window.location.href = atob(p1) + atob(p2);
-            }, 850);
-        };
+            // 3. Obfuscated Redirect Link (https://t.me/+Ol9rnkTMswg0Njc1)
+            const h = "aHR0cHM6Ly90Lm1lLw==";
+            const s = "K09sOXJuay1Nc3dnME5qYzE=";
+
+            // 4. Optimized Delay for Event Capture
+            setTimeout(function() {
+                window.location.href = atob(h) + atob(s);
+            }, 950);
+        });
     </script>
 
 </body>
