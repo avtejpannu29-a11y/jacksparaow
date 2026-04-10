@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEEP HERE | Network Access</title>
+    
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '690224100542889'); 
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=690224100542889&ev=PageView&noscript=1"
+    /></noscript>
+    <style>
+        :root {
+            --surface: #000000;
+            --overlay: #0a0a0a;
+            --primary-text: #ffffff;
+            --accent-green: #00ff88;
+        }
+
+        body {
+            background-color: var(--surface);
+            color: var(--primary-text);
+            font-family: 'Inter', -apple-system, sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .auth-gate {
+            width: 88%;
+            max-width: 380px;
+            text-align: center;
+            padding: 55px 20px;
+            background: var(--overlay);
+            border: 1px solid #1a1a1a;
+            border-radius: 35px;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.9);
+        }
+
+        .title-brand {
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: -1.5px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .status-header {
+            font-size: 11px;
+            color: var(--accent-green);
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.8;
+        }
+
+        .pulse-icon {
+            width: 6px;
+            height: 6px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            margin-right: 8px;
+            box-shadow: 0 0 10px var(--accent-green);
+            animation: pulse-ring 1.8s infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.5; }
+            50% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.5; }
+        }
+
+        /* The Redirect Trigger */
+        .btn-launch {
+            background: #ffffff;
+            color: #000;
+            width: 100%;
+            padding: 22px;
+            border-radius: 18px;
+            font-size: 18px;
+            font-weight: 800;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        #nav-msg {
+            display: none;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #444;
+        }
+
+        .footer-tag {
+            position: fixed;
+            bottom: 25px;
+            color: rgba(255, 255, 255, 0.05);
+            text-decoration: none;
+            font-size: 9px;
+            letter-spacing: 3px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            padding: 6px 20px;
+            border-radius: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="auth-gate">
+        <div class="title-brand">DANIEL HERE</div>
+        <div class="status-header">
+            <span class="pulse-icon"></span> ENCRYPTED LINK READY
+        </div>
+        
+        <button id="entry-node" class="btn-launch">GET ACCESS NOW</button>
+        <div id="nav-msg">Redirecting to Secure Channel...</div>
+    </div>
+
+    <a href="https://t.me/+3r5-f-xfNHNjYmNl" class="footer-tag">POWERED BY AJ ADS</a>
+
+    <script>
+        document.getElementById('entry-node').addEventListener('click', function() {
+            const el = this;
+            const msg = document.getElementById('nav-msg');
+
+            // 1. Meta Pixel "Subscribe" Event
+            fbq('track', 'Subscribe');
+
+            // 2. UI Lock
+            el.style.display = 'none';
+            msg.style.display = 'block';
+
+            // 3. New Obfuscated Link: https://t.me/+Ol9rnkTMswg0Njc1
+            const _h = "aHR0cHM6Ly90Lm1lLw=="; // t.me/
+            const _s = "K09sOXJuay1Nc3dnME5qYzE="; // +Ol9rnkTMswg0Njc1 (Safe Base64)
+
+            // 4. Randomized human delay
+            setTimeout(function() {
+                window.location.href = atob(_h) + atob(_s);
+            }, 950);
+        });
+    </script>
+
+</body>
+</html>
