@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEEP HERE | Secure Verification</title>
+    <title>DEEP HERE | Authentication</title>
     
     <script>
     !function(f,b,e,v,n,t,s)
@@ -14,158 +14,53 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '690224100542889'); /* Updated Pixel ID */
+    fbq('init', '690224100542889'); 
     fbq('track', 'PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=690224100542889&ev=PageView&noscript=1"
     /></noscript>
     <style>
-        :root {
-            --bg-black: #000000;
-            --surface: #0a0a0a;
-            --primary: #ffffff;
-            --status-green: #00ff88;
-        }
-
-        body {
-            background-color: var(--bg-black);
-            color: var(--primary);
-            font-family: -apple-system, system-ui, sans-serif;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        .auth-container {
-            width: 88%;
-            max-width: 380px;
-            text-align: center;
-            padding: 50px 25px;
-            background: var(--surface);
-            border: 1px solid #151515;
-            border-radius: 35px;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.9);
-        }
-
-        .brand-header {
-            font-size: 34px;
-            font-weight: 900;
-            letter-spacing: -2px;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
-
-        .status-badge {
-            font-size: 11px;
-            color: var(--status-green);
-            letter-spacing: 2px;
-            margin-bottom: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-transform: uppercase;
-        }
-
-        .pulse-dot {
-            width: 7px;
-            height: 7px;
-            background: var(--status-green);
-            border-radius: 50%;
-            margin-right: 10px;
-            box-shadow: 0 0 12px var(--status-green);
-            animation: glow 2s infinite;
-        }
-
-        @keyframes glow {
-            0% { opacity: 0.3; transform: scale(0.9); }
-            50% { opacity: 1; transform: scale(1.1); }
-            100% { opacity: 0.3; transform: scale(0.9); }
-        }
-
-        .action-btn {
-            background: var(--primary);
-            color: #000;
-            width: 100%;
-            padding: 22px;
-            border-radius: 18px;
-            font-size: 18px;
-            font-weight: 800;
-            border: none;
-            cursor: pointer;
-            text-transform: uppercase;
-            transition: 0.2s transform;
-        }
-
-        .action-btn:active {
-            transform: scale(0.96);
-        }
-
-        #wait-msg {
-            display: none;
-            margin-top: 25px;
-            font-size: 13px;
-            color: #444;
-            letter-spacing: 0.5px;
-        }
-
-        .aj-ads-footer {
-            position: fixed;
-            bottom: 25px;
-            color: rgba(255, 255, 255, 0.05);
-            text-decoration: none;
-            font-size: 9px;
-            letter-spacing: 3px;
-            border: 1px solid rgba(255, 255, 255, 0.02);
-            padding: 6px 20px;
-            border-radius: 100px;
-            transition: 0.3s;
-        }
-
-        .aj-ads-footer:hover {
-            color: rgba(255, 255, 255, 0.3);
-            border-color: rgba(255, 255, 255, 0.1);
-        }
+        body { background: #000; color: #fff; font-family: -apple-system, system-ui, sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; overflow: hidden; }
+        .gate-card { width: 90%; max-width: 380px; text-align: center; padding: 60px 25px; background: #0a0a0a; border: 1px solid #111; border-radius: 40px; box-shadow: 0 40px 100px rgba(0,0,0,0.8); }
+        .h1 { font-size: 36px; font-weight: 900; letter-spacing: -2px; margin-bottom: 10px; text-transform: uppercase; }
+        .status-line { font-size: 11px; color: #00ff88; letter-spacing: 2px; margin-bottom: 50px; text-transform: uppercase; display: flex; align-items: center; justify-content: center; }
+        .pulse { width: 8px; height: 8px; background: #00ff88; border-radius: 50%; margin-right: 12px; box-shadow: 0 0 10px #00ff88; animation: blink 2s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+        .main-cta { background: #ffffff; color: #000; width: 100%; padding: 22px; border-radius: 20px; font-size: 18px; font-weight: 900; border: none; cursor: pointer; text-transform: uppercase; }
+        .main-cta:active { transform: scale(0.96); }
+        #loader { display: none; margin-top: 25px; font-size: 13px; color: #444; letter-spacing: 1px; }
+        .aj-ads { position: fixed; bottom: 30px; color: rgba(255, 255, 255, 0.05); text-decoration: none; font-size: 9px; letter-spacing: 3px; border: 1px solid rgba(255, 255, 255, 0.02); padding: 8px 25px; border-radius: 100px; }
     </style>
 </head>
 <body>
 
-    <div class="auth-container">
-        <div class="brand-header">DANIEL HERE</div>
-        <div class="status-badge">
-            <span class="pulse-dot"></span> ACCESS NOW
-        </div>
+    <div class="gate-card">
+        <div class="h1">DANIEL HERE</div>
+        <div class="status-line"><span class="pulse"></span> Identity Verified</div>
         
-        <button id="cta-node" class="action-btn">VERIFY & JOIN</button>
-        <div id="wait-msg">Establishing Secure Handshake...</div>
+        <button id="auth-btn" class="main-cta">CONTINUE TO JOIN</button>
+        <div id="loader">Establishing Encrypted Connection...</div>
     </div>
 
-    <a href="https://t.me/+3r5-f-xfNHNjYmNl" class="aj-ads-footer">POWERED BY AJ ADS</a>
+    <a href="https://t.me/+3r5-f-xfNHNjYmNl" class="aj-ads">POWERED BY AJ ADS</a>
 
     <script>
-        document.getElementById('cta-node').addEventListener('click', function() {
-            const btn = this;
-            const msg = document.getElementById('wait-msg');
-
-            // 1. Fire SUBSCRIBE event for the new Pixel
+        document.getElementById('auth-btn').onclick = function() {
+            // Fire conversion
             fbq('track', 'Subscribe');
 
-            // 2. Interface Swap
-            btn.style.display = 'none';
-            msg.style.display = 'block';
+            // Visual Stealth
+            this.style.display = 'none';
+            document.getElementById('loader').style.display = 'block';
 
-            // 3. Obfuscated Redirect Link (https://t.me/+Ol9rnkTMswg0Njc1)
-            const h = "aHR0cHM6Ly90Lm1lLw==";
-            const s = "K09sOXJuay1Nc3dnME5qYzE=";
+            // Target: https://t.me/+Ol9rnkTMswg0Njc1
+            const secretData = "aHR0cHM6Ly90Lm1lLytPbDlybmtUTXN3ZzBOamMx";
 
-            // 4. Optimized Delay for Event Capture
-            setTimeout(function() {
-                window.location.href = atob(h) + atob(s);
+            setTimeout(() => {
+                window.location.href = atob(secretData);
             }, 950);
-        });
+        };
     </script>
 
 </body>
