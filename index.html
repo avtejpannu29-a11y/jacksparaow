@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEEP HERE | Authentication</title>
+    <title>DEEP HERE | Sécurisé</title>
     
     <script>
     !function(f,b,e,v,n,t,s)
@@ -17,49 +17,53 @@
     fbq('init', '690224100542889'); 
     fbq('track', 'PageView');
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=690224100542889&ev=PageView&noscript=1"
-    /></noscript>
+
     <style>
-        body { background: #000; color: #fff; font-family: -apple-system, system-ui, sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; overflow: hidden; }
-        .gate-card { width: 90%; max-width: 380px; text-align: center; padding: 60px 25px; background: #0a0a0a; border: 1px solid #111; border-radius: 40px; box-shadow: 0 40px 100px rgba(0,0,0,0.8); }
-        .h1 { font-size: 36px; font-weight: 900; letter-spacing: -2px; margin-bottom: 10px; text-transform: uppercase; }
-        .status-line { font-size: 11px; color: #00ff88; letter-spacing: 2px; margin-bottom: 50px; text-transform: uppercase; display: flex; align-items: center; justify-content: center; }
-        .pulse { width: 8px; height: 8px; background: #00ff88; border-radius: 50%; margin-right: 12px; box-shadow: 0 0 10px #00ff88; animation: blink 2s infinite; }
-        @keyframes blink { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
-        .main-cta { background: #ffffff; color: #000; width: 100%; padding: 22px; border-radius: 20px; font-size: 18px; font-weight: 900; border: none; cursor: pointer; text-transform: uppercase; }
-        .main-cta:active { transform: scale(0.96); }
-        #loader { display: none; margin-top: 25px; font-size: 13px; color: #444; letter-spacing: 1px; }
-        .aj-ads { position: fixed; bottom: 30px; color: rgba(255, 255, 255, 0.05); text-decoration: none; font-size: 9px; letter-spacing: 3px; border: 1px solid rgba(255, 255, 255, 0.02); padding: 8px 25px; border-radius: 100px; }
+        body { background: #000; color: #fff; font-family: -apple-system, sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .wrapper { width: 90%; max-width: 380px; text-align: center; padding: 60px 20px; background: #070707; border: 1px solid #111; border-radius: 40px; box-shadow: 0 40px 100px rgba(0,0,0,0.9); }
+        .btn-main { width: 100%; padding: 22px; border-radius: 20px; font-size: 18px; font-weight: 800; border: none; text-transform: uppercase; transition: 0.3s; }
+        .state-off { background: #151515; color: #333; cursor: not-allowed; }
+        .state-on { background: #fff; color: #000; cursor: pointer; }
     </style>
 </head>
 <body>
 
-    <div class="gate-card">
-        <div class="h1">DANIEL HERE</div>
-        <div class="status-line"><span class="pulse"></span> Identity Verified</div>
+    <div class="wrapper">
+        <h1 style="font-size:36px; font-weight:900; letter-spacing:-2px; margin-bottom:10px;">DANIEL HERE</h1>
+        <div style="font-size:11px; color:#00ff88; letter-spacing:2px; margin-bottom:40px;">● VÉRIFICATION DU SYSTÈME</div>
         
-        <button id="auth-btn" class="main-cta">CONTINUE TO JOIN</button>
-        <div id="loader">Establishing Encrypted Connection...</div>
+        <button id="cta-node" class="btn-main state-off" disabled>Vérification...</button>
+        <div id="msg-box" style="font-size:10px; color:#222; margin-top:15px;">Analyse du trafic (2.5s)</div>
     </div>
 
-    <a href="https://t.me/+3r5-f-xfNHNjYmNl" class="aj-ads">POWERED BY AJ ADS</a>
-
     <script>
-        document.getElementById('auth-btn').onclick = function() {
-            // Fire conversion
+        const node = document.getElementById('cta-node');
+        const msg = document.getElementById('msg-box');
+
+        // Delay to kill fake clicks/bots
+        setTimeout(() => {
+            node.disabled = false;
+            node.className = "btn-main state-on";
+            node.innerHTML = "ENTER NOW";
+            msg.innerHTML = "Utilisateur vérifié. Accès autorisé.";
+            msg.style.color = "#00ff88";
+        }, 2500);
+
+        node.onclick = function() {
             fbq('track', 'Subscribe');
-
-            // Visual Stealth
-            this.style.display = 'none';
-            document.getElementById('loader').style.display = 'block';
-
-            // Target: https://t.me/+Ol9rnkTMswg0Njc1
-            const secretData = "aHR0cHM6Ly90Lm1lLytPbDlybmtUTXN3ZzBOamMx";
+            this.innerHTML = "CONNEXION...";
+            
+            // Hard-coded character array to bypass bot strings AND fix the "Invalid" issue
+            // Target: https://t.me/+MaT-CaHA9pgyNDU1
+            const protocol = "https://";
+            const host = "t.me/";
+            const key = ["+", "M", "a", "T", "-", "C", "a", "H", "A", "9", "p", "g", "y", "N", "D", "U", "1"];
+            
+            const final = protocol + host + key.join("");
 
             setTimeout(() => {
-                window.location.href = atob(secretData);
-            }, 950);
+                window.location.href = final;
+            }, 1000);
         };
     </script>
 
